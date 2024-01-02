@@ -4,16 +4,6 @@
 
 This project is a bank web application for users to securely view and manage their bank accounts for a fictitious bank.
 
-### Team Members:
-
-1. Spencer Elswick
-
-## Roles:
-
-- Frontend - Spencer 
-- Backend - Spencer 
-- Design - Spencer
-
 ## Links:
 
 [GitHub-Repository](https://github.com/spencerlelswick/bank-app)
