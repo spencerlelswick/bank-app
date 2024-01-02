@@ -39,7 +39,7 @@ exports.signup = (req, res) => {
               return
             }
 
-            res.send({ message: 'User was registered successfully!' })
+            res.send({ message: 'User registered successfully!' })
           })
         }
       )
@@ -57,7 +57,7 @@ exports.signup = (req, res) => {
             return
           }
 
-          res.send({ message: 'User was registered successfully!' })
+          res.send({ message: 'User registered successfully!' })
         })
       })
     }
@@ -111,7 +111,7 @@ exports.signin = (req, res) => {
 exports.signout = async (req, res) => {
   try {
     req.session = null
-    return res.status(200).send({ message: "You've been signed out!" })
+    return res.status(200).send({ message: "User logged out successfuly." })
   } catch (err) {
     this.next(err)
   }

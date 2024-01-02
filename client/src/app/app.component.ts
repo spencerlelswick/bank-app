@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StorageService } from './services/storage.service';
 import { AuthService } from './services/auth.service';
@@ -22,6 +22,7 @@ export class AppComponent {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
+    private router: Router,
     private eventBusService: EventBusService
   ) { }
 
@@ -47,7 +48,10 @@ export class AppComponent {
       next: (res: any) => {
         console.log(res);
         this.storageService.clean();
-        window.location.reload();
+        this.router.navigate(['/']).then(() => {
+          window.location.reload();
+        })
+
       },
       error: (err: any) => {
         console.log(err);
