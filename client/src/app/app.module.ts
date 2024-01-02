@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
     LoginComponent,
     ProfileComponent,
     BoardUserComponent,
-    BoardAdminComponent
+    BoardAdminComponent,
+    FooterComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
