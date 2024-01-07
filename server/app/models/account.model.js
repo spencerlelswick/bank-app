@@ -4,7 +4,10 @@ const Account = mongoose.model(
   'Account',
   new mongoose.Schema({
     accountNum: String,
-    initDate: Date,
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
     status: Boolean,
     balance: Number,
     owner: {

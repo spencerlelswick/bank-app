@@ -4,6 +4,7 @@ const AUTH_SECRET = dotenv.parsed.AUTH_SECRET
 const db = require('../models')
 const User = db.user
 const Role = db.role
+const Account = db.account
 
 var jwt = require('jsonwebtoken')
 var bcrypt = require('bcryptjs')
@@ -15,7 +16,7 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8),
   })
 
-  user.save((err, user) => {
+  user.save(async (err, user) => {
     if (err) {
       res.status(500).send({ message: err })
       return
@@ -44,13 +45,16 @@ exports.signup = (req, res) => {
         }
       )
     } else {
-      Role.findOne({ name: 'user' }, (err, role) => {
+      Role.findOne({ name: 'user' }, async (err, role) => {
         if (err) {
           res.status(500).send({ message: err })
           return
         }
+        
+        const newAccount = await Account.create({ accountNum: Math.floor(100000 + Math.random() * 900000000), status: true, balance: 10000, owner: user._id, transactions: [] })
 
         user.roles = [role._id]
+        user.accounts.push(newAccount)
         user.save((err) => {
           if (err) {
             res.status(500).send({ message: err })
@@ -60,6 +64,8 @@ exports.signup = (req, res) => {
           res.send({ message: 'User registered successfully!' })
         })
       })
+
+
     }
   })
 }
