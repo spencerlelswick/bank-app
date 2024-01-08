@@ -1,15 +1,29 @@
-exports.allAccess = (req, res) => {
+const { User } = require("../models")
+
+
+module.exports = {
+  index,
+  create,
+  show,
+  update,
+  allAccess,
+  userBoard
+}
+
+
+allAccess = (req, res) => {
   res.status(200).send('Public Content.')
 }
 
-exports.userBoard = (req, res) => {
+userBoard = (req, res) => {
   res.status(200).send('User Content.')
 }
 
-exports.adminBoard = (req, res) => {
-  res.status(200).send('Admin Content.')
-}
 
-exports.moderatorBoard = (req, res) => {
-  res.status(200).send('Moderator Content.')
+async function show(req, res) {
+  try {
+    res.status(200).json(await User.findById(req.params.id));
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 }
