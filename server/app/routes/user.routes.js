@@ -23,6 +23,8 @@ module.exports = function (app) {
     controller.adminBoard
   )
 
-  app.get('/api/user/:id', controller.show)
+  app.get('/api/user/:id',
+    [authJwt.verifyToken],
+    controller.show)
 
 }
