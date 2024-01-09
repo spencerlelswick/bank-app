@@ -24,7 +24,8 @@ module.exports = function (app) {
   )
 
   app.get('/api/user/:id',
-    [authJwt.verifyToken],
+    // [authJwt.verifyToken],
+    // null,
     controller.show)
 
 }

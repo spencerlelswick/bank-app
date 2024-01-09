@@ -1,5 +1,5 @@
-const { User } = require("../models")
-
+const db = require("../models")
+const User = db.user
 
 exports.allAccess = (req, res) => {
   res.status(200).send('Public Content.')
@@ -19,7 +19,16 @@ exports.moderatorBoard = (req, res) => {
 
 exports.show = async (req, res) => {
   try {
-    res.status(200).json(await User.findById(req.params.id));
+    //TODO verify current user
+    let user = await User.findById(req.params.id)
+    userInfo = {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      roles: user.roles,
+      accounts: user.accounts,
+    }
+    res.status(200).json(userInfo);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
