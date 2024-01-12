@@ -7,8 +7,9 @@
     <h2>{{account.balance | currency:'USD':'symbol':'4.2-2'}}</h2>
 
     <p>Checking Account: {{ account.accountNum }}</p>
+    <p [ngStyle]="{'color': (account.status) ? '#198754' : '#dc3545'}">{{ account.status ? 'ACTIVE' : 'INACTIVE' }}</p>
   </li>
 
   <h2>Transactions</h2>
-  
+
 </ul>
