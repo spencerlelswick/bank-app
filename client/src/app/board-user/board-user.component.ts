@@ -11,7 +11,9 @@ import { StorageService } from '../services/storage.service';
 })
 export class BoardUserComponent implements OnInit {
 
-  userData = {}
+  userData: any = {}
+
+
 
   constructor(private userService: UserService, private storageService: StorageService) {
 
