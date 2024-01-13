@@ -1,0 +1,8 @@
+.accounts-list {
+  list-style-type: none;
+}
+
+.accounts-item {
+  border: gray 1px solid;
+  padding: 2rem;
+}
