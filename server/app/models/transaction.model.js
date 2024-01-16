@@ -4,9 +4,9 @@ const Transaction = mongoose.model(
   'Transaction',
   new mongoose.Schema({
     transactionNum: String,
-    user: {
+    account: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'Account',
     },
     amount: Number,
     category: String,

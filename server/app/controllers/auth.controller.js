@@ -8,6 +8,7 @@ const Account = db.account
 
 var jwt = require('jsonwebtoken')
 var bcrypt = require('bcryptjs')
+const Transaction = require('../models/transaction.model')
 
 exports.signup = (req, res) => {
   const user = new User({
@@ -50,8 +51,21 @@ exports.signup = (req, res) => {
           res.status(500).send({ message: err })
           return
         }
-        
-        const newAccount = await Account.create({ accountNum: Math.floor(100000 + Math.random() * 900000000), status: true, balance: 10000, owner: user._id, transactions: [] })
+
+
+        const mockAcctNum = Math.floor(100000 + Math.random() * 900000000)
+        const mockTxAmount = Math.floor(Math.random() * (10 * 100 - 100) + 100) / (100)
+        const mockTransactions = []
+
+
+        const newAccount = await Account.create({ accountNum: mockAcctNum, status: true, balance: 100, owner: user._id, transactions: mockTransactions })
+
+
+        // for (let i = 0; i < 10; i++) {
+        const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount })
+        console.log(newMockTx);
+
+        // }
 
         user.roles = [role._id]
         user.accounts.push(newAccount)
