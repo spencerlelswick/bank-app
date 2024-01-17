@@ -16,6 +16,10 @@
 
 
       <h2>Transactions</h2>
+      <ul>
+        {{ userData.accounts?.transactions | json}}
+        <!-- <li *ngFor="let transaction of userData.accounts.transactions"></li> -->
+      </ul>
     </div>
     <div class="col-4">
       <p>deposit</p>
