@@ -61,13 +61,15 @@ exports.signup = (req, res) => {
         const newAccount = await Account.create({ accountNum: mockAcctNum, status: true, balance: 100, owner: user._id, transactions: mockTransactions })
 
 
-        // for (let i = 0; i < 10; i++) {
-        const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount })
-        console.log(newMockTx);
+        for (let i = 0; i < 10; i++) {
+          const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount })
+          console.log(newMockTx);
+          mockTransactions.push(newMockTx)
+        }
 
-        // }
 
         user.roles = [role._id]
+        newAccount.transactions.push(mockTransactions)
         user.accounts.push(newAccount)
         user.save((err) => {
           if (err) {

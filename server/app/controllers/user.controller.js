@@ -20,7 +20,16 @@ exports.moderatorBoard = (req, res) => {
 exports.show = async (req, res) => {
   try {
     //TODO verify current user
-    let user = await User.findById(req.params.id).populate("accounts")
+    let user = await User.findById(req.params.id).populate("accounts").populate({
+      path: 'accounts',
+      populate: {
+        path: 'transactions',
+        model: 'Transaction'
+      }
+    });
+
+    console.log(user);
+
     userInfo = {
       id: user._id,
       username: user.username,

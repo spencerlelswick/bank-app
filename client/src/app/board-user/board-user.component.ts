@@ -27,6 +27,8 @@ export class BoardUserComponent implements OnInit {
     let storedUser = this.storageService.getUser()
     this.userService.getUserData(storedUser.id).subscribe((data: any) => {
       this.userData = data
+      console.log(this.userData);
+
     })
   }
 }
