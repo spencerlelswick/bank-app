@@ -54,9 +54,7 @@ exports.signup = (req, res) => {
 
 
         const mockAcctNum = Math.floor(100000 + Math.random() * 900000000)
-        const mockTxNum = Math.floor(100000 + Math.random() * 900000000)
 
-        const mockTxAmount = Math.floor(Math.random() * (10 * 100 - 100) + 100) / (100)
         const mockTransactions = []
 
 
@@ -64,7 +62,12 @@ exports.signup = (req, res) => {
 
 
         for (let i = 0; i < 10; i++) {
-          const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount, category: 'shopping', status: true, transactionNum: mockTxNum })
+          const mockTxNum = Math.floor(100000 + Math.random() * 900000000)
+          const mockTxAmount = Math.floor(Math.random() * (10 * 100 - 100) + 100) / (100)
+          const mockVendors = ['WALMART', 'KROGER', 'AMAZON', 'BESTBUY', 'TARGET', 'MEIJER', 'COSTCO', 'LOWES', 'HOME DEPOT', 'AUTO ZONE']
+          const mockVendorIdx = Math.floor(Math.random() * 10)
+
+          const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount, category: mockVendors[mockVendorIdx], status: true, transactionNum: mockTxNum })
           mockTransactions.push(newMockTx._id)
         }
 

@@ -16,10 +16,31 @@
 
 
       <h2>Transactions</h2>
-      <ul>
-        {{ userData.accounts?.transactions | json}}
+      <div *ngFor="let account of userData.accounts">
+        <div *ngFor="let transaction of account.transactions">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <p>#{{transaction.transactionNum}}</p>
+              </div>
+              <div class="col">
+                <p>{{transaction.category}}</p>
+              </div>
+
+              <div class="col">
+                <p>${{transaction.amount}}</p>
+              </div>
+              <div class="col">
+                <p [ngStyle]="{'color': (transaction.status) ? '#198754' : '#dc3545'}">{{transaction.status ? 'Posted' :
+                  'Pending'}}</p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
         <!-- <li *ngFor="let transaction of userData.accounts.transactions"></li> -->
-      </ul>
+      </div>
     </div>
     <div class="col-4">
       <p>deposit</p>
