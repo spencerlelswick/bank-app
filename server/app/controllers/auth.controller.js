@@ -54,6 +54,8 @@ exports.signup = (req, res) => {
 
 
         const mockAcctNum = Math.floor(100000 + Math.random() * 900000000)
+        const mockTxNum = Math.floor(100000 + Math.random() * 900000000)
+
         const mockTxAmount = Math.floor(Math.random() * (10 * 100 - 100) + 100) / (100)
         const mockTransactions = []
 
@@ -62,14 +64,15 @@ exports.signup = (req, res) => {
 
 
         for (let i = 0; i < 10; i++) {
-          const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount })
-          console.log(newMockTx);
-          mockTransactions.push(newMockTx)
+          const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount, category: 'shopping', status: true, transactionNum: mockTxNum })
+          mockTransactions.push(newMockTx._id)
         }
 
-
         user.roles = [role._id]
-        newAccount.transactions.push(mockTransactions)
+
+        newAccount.transactions = mockTransactions
+        newAccount.save()
+        console.log(newAccount);
         user.accounts.push(newAccount)
         user.save((err) => {
           if (err) {
