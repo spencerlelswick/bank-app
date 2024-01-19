@@ -11,6 +11,7 @@ const Transaction = mongoose.model(
     amount: Number,
     category: String,
     status: Boolean,
+    credit: Boolean,
   })
 )
 

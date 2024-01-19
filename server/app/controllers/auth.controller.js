@@ -58,7 +58,8 @@ exports.signup = (req, res) => {
         const mockTransactions = []
 
 
-        const newAccount = await Account.create({ accountNum: mockAcctNum, status: true, balance: 100, owner: user._id, transactions: mockTransactions })
+        const newAccount = await Account.create({ accountNum: mockAcctNum, status: true, balance: 0.00, owner: user._id, transactions: mockTransactions })
+
 
 
         for (let i = 0; i < 10; i++) {
@@ -66,14 +67,23 @@ exports.signup = (req, res) => {
           const mockTxAmount = Math.floor(Math.random() * (10 * 100 - 100) + 100) / (100)
           const mockVendors = ['WALMART', 'KROGER', 'AMAZON', 'BESTBUY', 'TARGET', 'MEIJER', 'COSTCO', 'LOWES', 'HOME DEPOT', 'AUTO ZONE']
           const mockVendorIdx = Math.floor(Math.random() * 10)
+          let newMockTx = {}
 
-          const newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount, category: mockVendors[mockVendorIdx], status: true, transactionNum: mockTxNum })
+          if (mockTransactions.length === 0) {
+            newMockTx = await Transaction.create({ account: newAccount._id, amount: 100.00, category: 'New Account Credit', credit: true, status: true, transactionNum: mockTxNum })
+          } else {
+            newMockTx = await Transaction.create({ account: newAccount._id, amount: mockTxAmount, credit: false, category: mockVendors[mockVendorIdx], status: true, transactionNum: mockTxNum })
+          }
           mockTransactions.push(newMockTx._id)
+          console.log(newMockTx);
+
+          newMockTx.credit ? newAccount.balance += newMockTx.amount : newAccount.balance -= newMockTx.amount
+          console.log(newAccount);
         }
 
         user.roles = [role._id]
 
-        newAccount.transactions = mockTransactions
+        newAccount.transactions = mockTransactions.reverse()
         newAccount.save()
         console.log(newAccount);
         user.accounts.push(newAccount)
