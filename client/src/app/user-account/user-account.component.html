@@ -1,5 +1,4 @@
 <div class="container">
-
   <h1>Banking</h1>
   <div class="row">
     <div class="col-8">
@@ -12,9 +11,6 @@
           </p>
         </li>
       </ul>
-
-
-
       <h2>Transactions</h2>
       <div *ngFor="let account of userData.accounts">
         <div *ngFor="let transaction of account.transactions">
@@ -36,11 +32,8 @@
                   'Pending'}}</p>
               </div>
             </div>
-
-
           </div>
         </div>
-        <!-- <li *ngFor="let transaction of userData.accounts.transactions"></li> -->
       </div>
     </div>
     <div class="col-4">

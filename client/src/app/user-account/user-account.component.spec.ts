@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoardUserComponent } from './board-user.component';
+import { BoardUserComponent } from './user-account.component';
 
 describe('BoardUserComponent', () => {
   let component: BoardUserComponent;
@@ -10,8 +10,8 @@ describe('BoardUserComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BoardUserComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(BoardUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
