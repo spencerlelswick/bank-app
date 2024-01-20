@@ -6,11 +6,16 @@ This project is a bank web application for securely viewing and managing bank ac
 
 ## Features
 
+- [ ] Credit Card Reward System
+- [ ] Mortgage Calculator
+ 
 ### Front-end
 
-- 1
-- 2
-- 3
+- [x] Display Bank accounts and transactions
+- [ ] Sort/filter/search transactions
+- [ ] Tabs for each account
+- [ ] Inactivity Signout
+- [ ] Loading spinner
 
 ### Back-end
 
@@ -46,7 +51,7 @@ This project is a bank web application for securely viewing and managing bank ac
 
 - HTML
 - CSS
-- JS
+- TypeScript
 - Bootstrap
 - Angular
 - Node
@@ -56,8 +61,10 @@ This project is a bank web application for securely viewing and managing bank ac
 - Netlify
 - Heroku
 
-## Icebox Feature
+## Icebox Features
 
 - [ ] Credit Card Reward System
 - [ ] Mortgage Calculator
+- [ ] Retirement Calculator
+- [ ] Investment Calculator
  

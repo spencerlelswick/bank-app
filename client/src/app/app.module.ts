@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { BoardUserComponent } from './user-account/user-account.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -18,7 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    BoardUserComponent,
+    UserAccountComponent,
     BoardAdminComponent,
     FooterComponent
   ],

@@ -5,11 +5,11 @@ import { UserService } from '../services/user.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
-  selector: 'app-board-user',
-  templateUrl: './board-user.component.html',
-  styleUrl: './board-user.component.css',
+  selector: 'app-user-account',
+  templateUrl: './user-account.component.html',
+  styleUrl: './user-account.component.css',
 })
-export class BoardUserComponent implements OnInit {
+export class UserAccountComponent implements OnInit {
 
   userData: any = {}
 
