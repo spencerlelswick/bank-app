@@ -28,7 +28,8 @@
               </div>
 
               <div class="col">
-                <p>${{transaction.amount}}</p>
+                <p [ngStyle]="{'color': (transaction.credit) ? '#198754' : '#dc3545'}">{{ transaction.credit ? '+' :
+                  '-'}}${{transaction.amount}}</p>
               </div>
               <div class="col">
                 <p [ngStyle]="{'color': (transaction.status) ? '#198754' : '#dc3545'}">{{transaction.status ? 'Posted' :
