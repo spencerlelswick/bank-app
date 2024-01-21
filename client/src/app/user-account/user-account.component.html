@@ -11,35 +11,36 @@
           </p>
         </li>
       </ul>
-      <h2>Transactions</h2>
-      <div *ngFor="let account of userData.accounts">
-        <div *ngFor="let transaction of account.transactions">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <p>#{{transaction.transactionNum}}</p>
-              </div>
-              <div class="col">
-                <p>{{transaction.category}}</p>
-              </div>
 
-              <div class="col">
-                <p [ngStyle]="{'color': (transaction.credit) ? '#198754' : '#dc3545'}">{{ transaction.credit ? '+' :
-                  '-'}}${{transaction.amount}}</p>
-              </div>
-              <div class="col">
-                <p [ngStyle]="{'color': (transaction.status) ? '#198754' : '#dc3545'}">{{transaction.status ? 'Posted' :
-                  'Pending'}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="col-4">
       <p>deposit</p>
       <p>withdraw</p>
       <p>transfer</p>
     </div>
+  </div>
+  <div class="row">
+    <h2>Transactions</h2>
+    <table class="table" *ngFor="let account of userData.accounts">
+      <thead>
+        <tr>
+          <th scope="col">Transaction Number</th>
+          <th scope="col">Vendor</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of account.transactions">
+          <th scope="row">#{{transaction.transactionNum}}</th>
+          <td>{{transaction.category}}</td>
+          <td [ngStyle]="{'color': (transaction.credit) ? '#198754' : '#dc3545'}">{{ transaction.credit ? '+' :
+            '-'}}${{transaction.amount}}</td>
+          <td [ngStyle]="{'color': (transaction.status) ? '#198754' : '#dc3545'}">{{transaction.status ? 'Posted' :
+            'Pending'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
