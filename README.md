@@ -6,8 +6,8 @@ This project is a bank web application for securely viewing and managing bank ac
 
 ## Features
 
-- [ ] Credit Card Reward System
-- [ ] Mortgage Calculator
+- [ ] 
+- [ ] 
  
 ### Front-end
 
